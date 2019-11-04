@@ -7,7 +7,7 @@ export abstract class Filter {
     this.kind = this.constructor.name;
   }
 
-  filter(data: any[]) {
+  filter(data: any[], selected: any) {
     throw new Error('not implemented');
   }
 }

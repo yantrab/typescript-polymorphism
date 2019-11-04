@@ -9,7 +9,7 @@ export class FilterGroup {
 
     filter(data, state) {
         let result = data;
-        state.selectedFilters.forEach(selected => (result = this.filters[selected.id].filter(result)));
+        state.selectedFilters.forEach(selected => (result = this.filters[selected.id].filter(result, selected)));
         return result;
     }
 }

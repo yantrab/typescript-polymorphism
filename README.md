@@ -1,7 +1,9 @@
 # typescript-polymorphism
 
 An example of how to implement polymorphism in typescript
+<p dir="rtl"> 
 פולימורפיזם בטייפסקריפט.
+
 
 מי שמגיע מעולם הדוט נט כנראה יודע מה זה פולימורפיזם. מי שלא, יבין לפי הדוגמא בהמשך.
 
@@ -13,7 +15,7 @@ An example of how to implement polymorphism in typescript
 
 בתיכנות פונקציונלי, כדי להפעיל את הפילטור, נכתוב פו' עם switch case, ונעשה פילטור לפי הסוג של הפילטר. בתיכנות ddd, נכתוב את הלוגיקה במודל עצמו.
 קודם ניצור מודל אבסטרקטי שיגדיר פילטר בסיס.
-
+</p>
 ```typescript
 export abstract class Filter {
   fieldPath: string;
@@ -44,10 +46,11 @@ export class YesNoFilter extends Filter {
   }
 }
 ```
+<p dir="rtl"> 
 עכשיו שמנהל המוצר יצור פילטרים, בכל אחד יהיה את המימוש של הפילטור.
 הבעיה היא שכאשר נעביר את את הפילטרים לקליינט, או לפני כן, שכאשר נשמור את רשימת הפילטרים בדיבי, נאבד את כל הפונקציונליות.
 לכן, נוסיף פרמטר נוסף kind שבו נשמור את סוג הפילטר. וניצור מופעים לפי זה.
-
+</p>
 ```typescript
 export abstract class Filter {
 ...

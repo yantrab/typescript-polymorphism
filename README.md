@@ -1,21 +1,21 @@
 # typescript-polymorphism
 
 An example of how to implement polymorphism in typescript
-<p dir="rtl"> 
-פולימורפיזם בטייפסקריפט.
 
+Polymorphism in typescript.
 
-מי שמגיע מעולם הדוט נט כנראה יודע מה זה פולימורפיזם. מי שלא, יבין לפי הדוגמא בהמשך.
+Anyone who comes from .net or java probably knows what polymorphism is. Whoever does not, will understand later from example.
 
-נניח שאנו רוצים מערכת גנרית לפילטור נתונים. מנהל המוצר יגדיר את הפילטרים, והמשתמש יוכל לפלטר לפיהם.
-ניקח שני פילטרים לדוגמא:
+Suppose we want a generic data filtering system. The product manager will set the filters, and the users will be able to filter by them.
 
-1. לפי טווח.
-2. לפי פרמטר בולייני.
+Let's take two sample filters:
 
-בתיכנות פונקציונלי, כדי להפעיל את הפילטור, נכתוב פו' עם switch case, ונעשה פילטור לפי הסוג של הפילטר. בתיכנות ddd, נכתוב את הלוגיקה במודל עצמו.
-קודם ניצור מודל אבסטרקטי שיגדיר פילטר בסיס.
-</p>
+1. By range.
+2. By Boolean parameter.
+
+In functional programming, to activate the filter, we will write PO with a switch case, and filter will be made according to the type of filter. In ddd programming, we will write the logic in the model itself.
+First we will create an abstract model that will define a base filter.
+
 ```typescript
 export abstract class Filter {
   fieldPath: string;

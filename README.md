@@ -13,7 +13,8 @@ Let's take two sample filters:
 1. By range.
 2. By Boolean parameter.
 
-In functional programming, to activate the filter, we will write PO with a switch case, and filter will be made according to the type of filter. In ddd programming, we will write the logic in the model itself.
+In functional programming, to activate the filter, we will write function with some switch case, and do filter according to the filter type. In DDD programming, we will write the logic in the model itself.
+
 First we will create an abstract model that will define a base filter.
 
 ```typescript
@@ -30,7 +31,8 @@ export abstract class Filter {
 }
 ```
 
-וניצור מודלים עבור הפילטרים
+And the filters:
+
 ```typescript
 export class RangeFilter extends Filter {
   filter(data, selected) {
@@ -46,11 +48,12 @@ export class YesNoFilter extends Filter {
   }
 }
 ```
-<p dir="rtl"> 
-עכשיו שמנהל המוצר יצור פילטרים, בכל אחד יהיה את המימוש של הפילטור.
-הבעיה היא שכאשר נעביר את את הפילטרים לקליינט, או לפני כן, שכאשר נשמור את רשימת הפילטרים בדיבי, נאבד את כל הפונקציונליות.
-לכן, נוסיף פרמטר נוסף kind שבו נשמור את סוג הפילטר. וניצור מופעים לפי זה.
-</p>
+Now, when product manager will create filters, each filter will have the filter implementaion.
+
+The problem is that when we pass the filters to the client, or before that, when we save the filter list in the database, we lose all functionality.
+
+To solve it, we will add `kind` parameter  to base class, and initial it with `this.constructor.name`.
+
 ```typescript
 export abstract class Filter {
 ...
@@ -62,6 +65,11 @@ export abstract class Filter {
 ...
 }
 ```
+
+So now, for `const filters = [new RangeFilter({fieldPath:'some-path'}), new YesNoFilter({fieldPath:'some-path'})]`,  each filter get here kind.
+
+Finally, on a client side, we need to instantiate them:
+
 ```typescript
 export class FilterGroup {
     filters: { [key: string]: Filter };
